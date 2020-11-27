@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <head>
-
-    <meta charset = UTF-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
+
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
-
-    .header_button{
-        font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: 4px;
-    }
 
     body {
         background-image: url('https://i.ibb.co/1myWrBp/abstract-Blue-background-low-poly-textured-triangle-shapes-in-random-pattern-trendy-lowpoly-backgrou.jpg');
@@ -19,44 +14,45 @@
     }
 
     div.header {
+        font-size: 3vw;
         text-shadow: 4px 4px #13293d;
-        position: relative;
-        top: 200px;
         text-align: center;
+        margin-top: 30vh;
         background: #13293D;
         border-radius: 15px;
         border: 2px solid #E8F1F2;
     }
 
-
     .header_button {
         font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: 4px;
-        border-radius: 5px 50px;
+        letter-spacing: 3px;
+        border-radius: 5px 30px;
         background-color: rgba(220,160,140,0);
         border: 2px solid #E8F1F2;
         color: #E8F1F2;
-        width: 300px;
-        height: 100px;
         box-shadow: inset 0 0 0 0 #13293D;
         transition: ease-out 0.5s;
-        font-size: 2rem;
-        outline: none;
+        font-size: 5vw;
+
+
     }
 
-    .header_button:hover{
-        box-shadow: inset 300px 0 0 0 #13293D;
+    .header_button:hover {
+        box-shadow: inset 20vw 0 0 0 #13293D;
         cursor: pointer;
         color: #E8F1F2;
     }
 
-    .wrapper{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
+    .wrapper {
+
         text-align: center;
-        min-height: 100vh;
+
+    }
+
+    div.privacy_notification {
+        font-size: 2.5vw;
+        margin-left: 10vw;
+        margin-right: 10vw;
     }
 
     </style>
@@ -64,13 +60,21 @@
 
 <body>
     <div class = "header">
-        <p style= "color:#E8F1F2;font-size:50px"> Welcome and thank you for helping me out</p>
+        <p style= "color:#E8F1F2"> Welcome and thank you for helping me out</p>
     </div>
 
+    <div class = "privacy_notification">
+        <p style = "color:#E8F1F2"> In the further course, this website will collect data from you. This
+        data cannot be traced back to you. This means that you are completely anonymous. However by clicking on the "Start"
+        button, you agree, that I'm allowed to collect your data and evaluate them for my university project.</p>
+    </div>
 
     <div class="wrapper">
-        <button class="header_button">Start</button>
+        <button type="button" class="header_button">
+            Start
+        </button>
     </div>
+
 
 
 
