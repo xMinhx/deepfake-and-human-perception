@@ -5,3 +5,7 @@ from django.shortcuts import render
 def home_screen_view(request):
     print(request.headers)
     return render(request, "Start.html", {})
+
+def user_data_view(request):
+    print(request.headers)
+    return render(request, "User_data.html", {})

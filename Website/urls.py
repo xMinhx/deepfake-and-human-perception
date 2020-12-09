@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Start import views as home
-from Survey import views as exercise
+
 
 
 urlpatterns = [
     path('', home.home_screen_view),
+    path('userdata/', home.user_data_view),
     path('admin/', admin.site.urls),
-    path('exercise/', exercise.exercise_screen)
 ]
