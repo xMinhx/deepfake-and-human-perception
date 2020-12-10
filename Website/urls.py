@@ -21,6 +21,7 @@ from Start import views as home
 
 urlpatterns = [
     path('', home.home_screen_view),
-    path('userdata/', home.user_data_view),
+    path('userdata/', home.userdata_view),
+    path('classification/', home.classification_view),
     path('admin/', admin.site.urls),
 ]

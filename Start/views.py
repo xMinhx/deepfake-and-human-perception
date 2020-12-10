@@ -6,6 +6,10 @@ def home_screen_view(request):
     print(request.headers)
     return render(request, "Start.html", {})
 
-def user_data_view(request):
+def userdata_view(request):
     print(request.headers)
-    return render(request, "User_data.html", {})
+    return render(request, "Userdata.html", {})
+
+def classification_view(request):
+    print(request.headers)
+    return render(request, "classification.html", {})
