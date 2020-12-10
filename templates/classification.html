@@ -28,7 +28,7 @@
         color: #E8F1F2;
         box-shadow: inset 0 0 0 0 #13293D;
         transition: ease-out 0.5s;
-        font-size:calc(10px + 1.5vw);
+        font-size:calc(10px + 1vw);
         outline: 0;
     }
 
@@ -58,7 +58,8 @@
         transition: ease-out 0.5s;
         font-size:calc(10px + 1.5vw);
         outline: 0;
-        text-align: center;
+        text-align-last: center;
+        display:inline-block;
     }
 
     select:hover{
@@ -77,7 +78,19 @@
         text-align: center;
     }
 
+    .choose_wrapper{
+        text-align: center;
+        margin-top: 10vh;
+    }
+
+    .difficulty_wrapper{
+        text-align: center;
+        margin-top: 1vh;
+    }
+
     </style>
+
+
 
 </head>
 
@@ -92,7 +105,8 @@
 
 <div class = "button_wrapper">
 <button onclick="togglePlay()" type="button" class="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="replay()" type="button" class="replay_button">Replay</button>
+<button onclick="replay()" type="button" class="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="fullscreen()" type="button" class="fullscreen">Fullscreen</button>
 </div>
 
 <div>&nbsp;</div>
@@ -101,31 +115,38 @@
     <form method="post">
     <select name='Playspeed' onchange='event()'>
          <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
-         <option value='-1.0'>&nbsp;&nbsp;Backward</option>
-         <option value='-0.5'>&nbsp;&nbsp;-0.5x</option>
-         <option value='0.5'>&nbsp;&nbsp;0.5x</option>
-         <option value='1.0'>&nbsp;&nbsp;Normal</option>
-         <option value='1.5'>&nbsp;&nbsp;1.5x</option>
-         <option value='2.0'>&nbsp;&nbsp;2.0x</option>
+         <option value='-1.0'>Backward</option>
+         <option value='-0.5'>-0.5x</option>
+         <option value='0.5'>0.5x</option>
+         <option value='1.0'>Normal</option>
+         <option value='1.5'>1.5x</option>
+         <option value='2.0'>2.0x</option>
     </select>
 </form>
 </div>
 
-<script>
-var myVideo = document.getElementById("video");
-var isPlaying = false;
 
-function togglePlay() {
-  isPlaying ? myVideo.pause() : myVideo.play();
-}
+<div class = "choose_wrapper">
+    <form method="post">
+    <select name='category' onchange='event()'>
+         <option disabled selected>&nbsp;Category&nbsp;</option>
+         <option value='0'>manipulated</option>
+         <option value='1'>not-manipulated</option>
+    </select>
+</form>
+</div>
 
-myVideo.onplaying = function () {
-  isPlaying = true;
-};
-myVideo.onpause = function () {
-  isPlaying = false;
-};
-</script>
+<div>
+    <form class = "difficulty_wrapper" method="post">
+    <select name='difficulty' onchange='event()'>
+         <option disabled selected>&nbsp;Difficulty&nbsp;</option>
+         <option value='1'>Easy</option>
+         <option value='2'>Medium</option>
+         <option value='3'>Hard</option>
+    </select>
+</form>
+
+</div>
 
 
 </body>
