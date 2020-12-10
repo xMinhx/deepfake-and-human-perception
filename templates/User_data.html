@@ -26,15 +26,19 @@
     }
 
     .select-gender{
+        border: 2px solid #E8F1F2;
         margin-top: 20vh;
         margin-left: 30vw;
         margin-right: 30vw;
+        border-radius: 5px;
     }
 
     .select-age{
+        border: 2px solid #E8F1F2;
         margin-top: 5vh;
         margin-left: 30vw;
         margin-right: 30vw;
+        border-radius: 5px;
     }
 
     select:focus::-ms-value {
@@ -53,7 +57,6 @@
         background: #13293D;
         color: white;
         cursor: pointer;
-        font-size: 2vw;
         font-size:calc(8px + 1.5vw);
         box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.3);
         border-radius: 3px;
@@ -64,6 +67,29 @@
         color: #fff;
     }
 
+    .submit_button {
+        border: 2px solid #E8F1F2;
+        box-shadow: inset 0 0 0 0 #13293D;
+        letter-spacing: 3px;
+        border-radius: 5px 5px;
+        background-color: rgba(220,160,140,0);;
+        color: #E8F1F2;
+        transition: ease-out 0.5s;
+        font-size:calc(15px + 1.5vw);
+        outline: 0;
+    }
+
+
+    .submit_button:hover {
+        box-shadow: inset 20vw 0 0 0 #13293D;
+        cursor: pointer;
+        color: #E8F1F2;
+    }
+
+      .wrapper {
+        text-align: center;
+        margin-top: 5vh;
+    }
 
     </style>
 
@@ -74,12 +100,12 @@
 
     <div class = "header_container">
         <div class = "header">
-            <h1 style = "color:#E8F1F2"> Bitte gebe dein Alter und dein Geschlecht an.</h1>
+            <h1 style = "color:#E8F1F2">Please enter your gender and age.</h1>
         </div>
     </div>
 
     <div class="select-gender">
-        <select name="gender" required>
+        <select name="gender" id="gender" required>
             <option disabled selected>Choose Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -88,8 +114,9 @@
     </div>
 
 
+
  <div class = "select-age">
-   <select name="age" required >
+   <select name="age" id="age" required >
       <option disabled selected>Choose Age</option>
       <option>8</option>
       <option>9</option>
@@ -207,6 +234,11 @@
       <option>121</option>
       <option>122</option>
    </select>
+</div>
+
+<div class = " wrapper">
+     <button type="submit" id="submit" class ="submit_button">Submit</button>
+
 </div>
 
 </body>

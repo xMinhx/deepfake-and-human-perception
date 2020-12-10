@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
+    body {
+        background-image: url('https://i.ibb.co/1myWrBp/abstract-Blue-background-low-poly-textured-triangle-shapes-in-random-pattern-trendy-lowpoly-backgrou.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    div.notification{
+        font-size:calc(15px + 1.5vw);
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+    div.wrapper-notif{
+        background: #13293D;
+        border-radius: 15px;
+        border: 2px solid #E8F1F2;
+        margin: 5vh 5vh 10vh;
+    }
+
+    .header_button {
+        font-family: 'Source Sans Pro', sans-serif;
+        letter-spacing: 3px;
+        border-radius: 5px 5px;
+        background-color: rgba(220,160,140,0);
+        border: 2px solid #E8F1F2;
+        color: #E8F1F2;
+        box-shadow: inset 0 0 0 0 #13293D;
+        transition: ease-out 0.5s;
+        font-size:calc(15px + 1.5vw);
+        outline: 0;
+    }
+
+    .header_button:hover {
+        box-shadow: inset 20vw 0 0 0 #13293D;
+        cursor: pointer;
+        color: #E8F1F2;
+    }
+
+    .wrapper {
+        text-align: center;
+    }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class = "wrapper-notif">
+    <div class = "notification">
+        <p style = "color:#E8F1F2">On the next pages, you will be given some videos. Your task is to decide whether the video was
+        manipulated or not.
+        You may repeat the video, if you want to. <br><br>
+        Additionally you need to provide the difficulty of the classification of the video e.g if you had no problems to detect that the video was manipulated select "Easy".
+        <br><br>
+            The reason you classified the video as manipulated or not-manipulated can be elaborated in an optional text-box.
+            Eventhough the text-box may be optional, more information will help tremendously.</p>
+    </div>
+    </div>
+
+
+    <div class="wrapper">
+        <button type="button" class="header_button">
+            Next
+        </button>
+    </div>
+
+
+</body>
+
