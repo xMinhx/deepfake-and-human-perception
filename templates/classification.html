@@ -13,10 +13,15 @@
         background-size: cover;
     }
 
+
+
+    video{
+        width: 100%;
+        max-height: 100%;
+    }
+
     .video-margin{
-        margin: 0 auto;
-        width: 720px;
-        border:none;
+        margin: auto;
     }
 
     button{
@@ -28,11 +33,14 @@
         color: #E8F1F2;
         box-shadow: inset 0 0 0 0 #13293D;
         transition: ease-out 0.5s;
-        font-size:calc(10px + 1vw);
+        font-size: max(25px, 1vw);
         outline: 0;
     }
 
+
     .button_wrapper{
+        padding-top: min(10px, 5%);
+        padding-bottom: min(10px, 5%);
         text-align: center;
     }
 
@@ -41,6 +49,11 @@
         background: #13293D;
         cursor: pointer;
         color: #E8F1F2;
+    }
+
+    .submit_button:hover{
+        background: #45b563;
+        color: #E8F1F2
     }
 
     select{
@@ -56,7 +69,7 @@
         color: #E8F1F2;
         box-shadow: inset 0 0 0 0 #13293D;
         transition: ease-out 0.5s;
-        font-size:calc(10px + 1.5vw);
+        font-size:max(25px, 1vw);
         outline: 0;
         text-align-last: center;
         display:inline-block;
@@ -69,6 +82,7 @@
     }
 
 
+
     select:focus{
         background: #13293D;
         cursor: pointer;
@@ -76,16 +90,22 @@
 
     .select_wrapper{
         text-align: center;
+        padding-top: min(50px, 5%);
     }
 
     .choose_wrapper{
         text-align: center;
-        margin-top: 10vh;
+        padding-top: min(30px, 5%);
     }
 
     .difficulty_wrapper{
         text-align: center;
-        margin-top: 1vh;
+        padding-top: 1vh;
+    }
+
+    .submit_wrapper{
+        margin-top: 3vh;
+        text-align:center;
     }
 
     </style>
@@ -97,23 +117,9 @@
 <body>
 
 <div class = video-margin>
-    <video width="720" height="480" id="video">
-        <source src ="https://drive.google.com/uc?export=download&id=1IvYpfx0ntHYo4D6KtIbXNDyHPbSq-TVv" type='video/mp4'/>
-    </video>
-</div>
-
-
-<div class = "button_wrapper">
-<button onclick="togglePlay()" type="button" class="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="replay()" type="button" class="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="fullscreen()" type="button" class="fullscreen">Fullscreen</button>
-</div>
-
-<div>&nbsp;</div>
-
-<div class = "select_wrapper">
+    <div class = "select_wrapper">
     <form method="post">
-    <select name='Playspeed' onchange='event()'>
+    <select name='playspeed_name' id="playspeed_id" onchange='event()'>
          <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
          <option value='-1.0'>Backward</option>
          <option value='-0.5'>-0.5x</option>
@@ -124,6 +130,18 @@
     </select>
 </form>
 </div>
+    <div class = "button_wrapper">
+<button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="fullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
+</div>
+    <video width="720" height="480" id="video">
+        <source src ="https://drive.google.com/uc?export=download&id=1IvYpfx0ntHYo4D6KtIbXNDyHPbSq-TVv" type='video/mp4'/>
+    </video>
+</div>
+
+
+<div>&nbsp;</div>
 
 
 <div class = "choose_wrapper">
@@ -138,6 +156,7 @@
 
 <div>
     <form class = "difficulty_wrapper" method="post">
+
     <select name='difficulty' onchange='event()'>
          <option disabled selected>&nbsp;Difficulty&nbsp;</option>
          <option value='1'>Easy</option>
@@ -145,8 +164,13 @@
          <option value='3'>Hard</option>
     </select>
 </form>
-
 </div>
+
+<div class = "submit_wrapper">
+<button onclick="togglePlay()" type="button" class="submit_button" id="submit_button">Submit</button>
+</div>
+
+
 
 
 </body>

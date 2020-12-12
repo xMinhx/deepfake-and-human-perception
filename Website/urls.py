@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Start import views as home
+from Classification import views as video
 
 
 
 urlpatterns = [
     path('', home.home_screen_view),
     path('userdata/', home.userdata_view),
-    path('classification/', home.classification_view),
+    path('classification/', video.classification_view),
     path('admin/', admin.site.urls),
 ]
