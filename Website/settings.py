@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Start',
-    'Classification'
+    'Start.apps.StartConfig',
+    'Classification.apps.ClassificationConfig'
 ]
 
 MIDDLEWARE = [
