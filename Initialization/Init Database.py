@@ -5,7 +5,6 @@ from Start.models import User,Testgroup,Difficulty,Gender,Class
 # USE ONLY FOR INIT OF DATABASE
 #=============================
 
-import os
 import json
 
 easy = Difficulty(label_id = 1, label_name = "Easy")
@@ -41,6 +40,6 @@ for x in list_videos:
         tmp_label_id = Class.objects.get(label_id = 2)
     video = Video(video_id = x,
                   label=tmp_label_id,
-                  video_link_id = list_videos[x]["fileID"])
+                  video_link_id = list_videos[x]["fileID"][32:65])
     video.save()
 

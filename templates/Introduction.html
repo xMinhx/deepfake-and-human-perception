@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Info</title>
+{% extends base.html %}
+    {% block content %}
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
-
-    body {
-        background-image: url('https://i.ibb.co/1myWrBp/abstract-Blue-background-low-poly-textured-triangle-shapes-in-random-pattern-trendy-lowpoly-backgrou.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-
     div.notification{
         font-size:calc(15px + 1.5vw);
         margin-left: 10vw;
@@ -76,4 +67,4 @@
 
 
 </body>
-
+    {% endblock content %}

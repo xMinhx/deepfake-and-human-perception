@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Start import views as home
-from Classification import views as video
+from Start import views as start
+from Classification import views as classification
 
 
 
 urlpatterns = [
-    path('', home.home_screen_view),
-    path('userdata/', home.userdata_view),
-    path('classification/', video.classification_view),
+    path('', start.home_screen_view),
+    path('userdata/', start.userdata_view),
+    path('classification/', classification.classification_view),
     path('admin/', admin.site.urls),
 ]

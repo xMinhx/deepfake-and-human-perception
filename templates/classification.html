@@ -1,17 +1,9 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Info</title>
-
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
-
-    body {
-        background-image: url('https://i.ibb.co/1myWrBp/abstract-Blue-background-low-poly-textured-triangle-shapes-in-random-pattern-trendy-lowpoly-backgrou.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
 
         video{
         max-width: 720px;
@@ -126,8 +118,6 @@
 
     </style>
 
-
-
 </head>
 
 <body>
@@ -153,7 +143,7 @@
 <button onclick="fullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
 </div>
     <video width="100%" height="100%" id="video">
-        <source src ="https://drive.google.com/uc?export=download&id=1IvYpfx0ntHYo4D6KtIbXNDyHPbSq-TVv" type='video/mp4'/>
+        <source src ="https://drive.google.com/uc?export=download&id={{ video.video_link_id }}" type='video/mp4'/>
     </video>
 </div>
 
@@ -192,3 +182,4 @@
 
 
 </body>
+{% endblock content %}
