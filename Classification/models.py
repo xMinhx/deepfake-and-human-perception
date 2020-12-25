@@ -9,11 +9,10 @@ from Start.models import Difficulty
 
 class Video(models.Model):
     video_id = models.TextField(primary_key=True)
-    difficulty = models.ForeignKey(Difficulty, on_delete=models.PROTECT)
+    label = models.ForeignKey(Class, on_delete=models.PROTECT)
     video_link_id = models.TextField(unique=True)
 
     class Meta:
-        managed = False
         db_table = 'video'
 
 
@@ -30,6 +29,5 @@ class Classification(models.Model):
     text = models.TextField()
 
     class Meta:
-        managed = False
         db_table = 'classification'
         unique_together = (("session_id", "video_id"),)

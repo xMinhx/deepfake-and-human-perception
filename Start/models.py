@@ -10,7 +10,6 @@ class Gender(models.Model):
     label_id = models.IntegerField(primary_key=True)
 
     class Meta:
-        managed = False
         db_table = 'gender'
 
 
@@ -19,7 +18,6 @@ class Difficulty(models.Model):
     label_name = models.TextField(unique=True)
 
     class Meta:
-        managed = False
         db_table = 'difficulty'
 
 
@@ -28,7 +26,6 @@ class Class(models.Model):
     label_name = models.TextField(unique=True)
 
     class Meta:
-        managed = False
         db_table = 'class_label'
 
 class Testgroup(models.Model):
@@ -36,7 +33,6 @@ class Testgroup(models.Model):
     label_name = models.TextField(unique=True)
 
     class Meta:
-        managed = False
         db_table = 'testgroup'
 
 
@@ -50,5 +46,4 @@ class User(models.Model):
     fps = models.DecimalField(max_digits=4, decimal_places=3)
 
     class Meta:
-        managed = False
         db_table = 'user'
