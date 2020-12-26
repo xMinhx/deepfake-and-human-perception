@@ -41,7 +41,7 @@ class User(models.Model):
     age = models.IntegerField()
     pixel_width = models.IntegerField()
     pixel_height = models.IntegerField()
-    fps = models.DecimalField(max_digits=4, decimal_places=3)
+    fps = models.IntegerField()
 
     class Meta:
         db_table = 'user'

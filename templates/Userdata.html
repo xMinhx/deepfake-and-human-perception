@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+
+        <script>
+            const times = [];
+let fps ;
+
+function refreshLoop() {
+  window.requestAnimationFrame(() => {
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    times.push(now);
+    fps = times.length;
+    refreshLoop();
+  });
+}
+refreshLoop();
+
+    function get_device_data() {
+        document.getElementById('height').value = window.innerHeight;
+        document.getElementById('width').value = window.innerWidth;
+        document.getElementById('fps').value = fps;
+        document.getElementById("mainform").submit();
+    }
+
+</script>
+
 <head>
     {% extends "base.html" %}
     {% block content %}
@@ -95,12 +122,13 @@
         </div>
     </div>
 
+<form action = "" method="post" name="mainform" id="mainform">
     <div class="select-gender">
-        <select name="gender" id="gender" required>
+        <select name="gender" required>
             <option disabled selected>Choose Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+            <option value=1>Male</option>
+            <option value=2>Female</option>
+            <option value=3>Other</option>
         </select>
     </div>
 
@@ -226,11 +254,16 @@
       <option>122</option>
    </select>
 </div>
-
+    <input type='hidden' name= 'height' id="height" value='' />
+    <input type='hidden' name= 'width' id="width" value='' />
+    <input type='hidden' id= 'fps' name="fps" value='' />
 <div class = " wrapper">
-     <button type="submit" id="submit" class ="submit_button">Submit</button>
+     <button onclick="get_device_data()" id="submit_button" class ="submit_button">Submit</button>
 
 </div>
+
+
+</form>
 
 </body>
 {% endblock content %}
