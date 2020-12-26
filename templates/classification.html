@@ -8,7 +8,11 @@
         video{
         max-width: 720px;
         max-height: 480px;
+
     }
+        video::-webkit-media-controls {
+  display:none !important;
+}
 
     button{
         font-family: 'Source Sans Pro', sans-serif;
@@ -85,12 +89,12 @@
         padding-top: min(50px, 5%);
     }
 
-    .choose_wrapper{
+    .choose_form{
         text-align: center;
         padding-top: min(30px, 5%);
     }
 
-    .difficulty_wrapper{
+    .difficulty_form{
         text-align: center;
         padding-top: 1vh;
     }
@@ -125,10 +129,9 @@
 <div class = video-margin>
     <div class = "select_wrapper">
     <form method="post">
-    <select name='playspeed_name' id="playspeed_id" onchange='event()'>
+    <select name='playspeed_name' id="playspeed_id" onchange='playback()'>
          <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
-         <option value='-1.0'>Backward</option>
-         <option value='-0.5'>-0.5x</option>
+         <option value='0.1'>0.1x</option>
          <option value='0.5'>0.5x</option>
          <option value='1.0'>Normal</option>
          <option value='1.5'>1.5x</option>
@@ -140,31 +143,31 @@
     <div class = "button_wrapper">
 <button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="fullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
+<button onclick="openFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
 </div>
-    <video width="100%" height="100%" id="video">
+    <video controlsList="nodownload" playsinline loop width="100%" height="100%" id="video" oncontextmenu="return false;">
         <source src ="https://drive.google.com/uc?export=download&id={{ video.video_link_id }}" type='video/mp4'/>
     </video>
 </div>
 
 
 <div class ="container">
-    <textarea class = "textarea"></textarea>
+    <textarea class = "textarea" maxlength="300"></textarea>
 
 <div>
-    <form class="choose_wrapper" method="post" >
-    <select name='category' onchange='event()'>
+    <form class="choose_form" method="post" >
+    <select name='category'>
          <option disabled selected>&nbsp;Category&nbsp;</option>
-         <option value='0'>manipulated</option>
-         <option value='1'>not-manipulated</option>
+         <option value='1'>manipulated</option>
+         <option value='2'>not-manipulated</option>
     </select>
 </form>
 </div>
 
 <div>
-    <form class = "difficulty_wrapper" method="post">
+    <form class = "difficulty_form" method="post">
 
-    <select name='difficulty' onchange='event()'>
+    <select name='difficulty'>
          <option disabled selected>&nbsp;Difficulty&nbsp;</option>
          <option value='1'>Easy</option>
          <option value='2'>Medium</option>
@@ -175,11 +178,51 @@
 </div>
 
 <div class = "submit_wrapper">
-<button onclick="togglePlay()" type="button" class="submit_button" id="submit_button">Submit</button>
+<button type="submit" class="submit_button" id="submit_button">Submit</button>
 </div>
 
 </div>
 
 
 </body>
+
+    <script>
+        const video = document.getElementById("video");
+        var toggle_count = 0
+        var toggle_play = false
+    function togglePlay(){
+        toggle_play ? video.pause() : video.play();
+        toggle_play = !toggle_play
+        toggle_count ++;
+    }
+
+    var fullscreen_count = 0
+        function openFullscreen(){
+            fullscreen_count++;
+              if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    video.msRequestFullscreen();
+  }
+        }
+        var replay_count = 0
+        function replay(){
+            replay_count ++;
+                video.currentTime = '0';
+    video.play();
+        }
+        var playback_count = 0
+        function playback(){
+        video.playbackRate = document.getElementById("playspeed_id").value
+        }
+
+        var duration = 0;
+        function second_counter(){
+            duration += 1;
+        }
+        setInterval(second_counter, 1000)
+
+    </script>
 {% endblock content %}
