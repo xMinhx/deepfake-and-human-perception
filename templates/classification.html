@@ -119,16 +119,96 @@
         margin-right: max(30%, 0px);
     }
 
+    body, html {
+    height: 100%;
+    text-align: center;
+}
+
+.wrapper-loader{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #13293D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border: 4px solid #Fff;
+  top: 50%;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+
 
     </style>
 
 </head>
 
-<body>
+<div class="wrapper-loader" id="loader_screen">
+<span class="loader"><span class="loader-inner"></span></span>
+</div>
 
 <div class = video-margin>
     <div class = "select_wrapper">
-    <form method="post">
+    <form method="post" id="playbackspeed">{% csrf_token %}
     <select name='playspeed_name' id="playspeed_id" onchange='playback()'>
          <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
          <option value='0.1'>0.1x</option>
@@ -152,11 +232,11 @@
 
 
 <div class ="container">
-    <textarea class = "textarea" maxlength="300"></textarea>
+    <textarea class = "textarea" id="text_field" name="text_field" maxlength="300"></textarea>
 
 <div>
-    <form class="choose_form" method="post" >
-    <select name='category'>
+    <form class="choose_form">
+    <select name='category' id="category">
          <option disabled selected>&nbsp;Category&nbsp;</option>
          <option value='1'>manipulated</option>
          <option value='2'>not-manipulated</option>
@@ -165,40 +245,54 @@
 </div>
 
 <div>
-    <form class = "difficulty_form" method="post">
-
-    <select name='difficulty'>
+    <form class = "difficulty_form">
+    <select name='difficulty' id="difficulty">
          <option disabled selected>&nbsp;Difficulty&nbsp;</option>
          <option value='1'>Easy</option>
          <option value='2'>Medium</option>
          <option value='3'>Hard</option>
     </select>
+
 </form>
 </div>
 </div>
 
 <div class = "submit_wrapper">
-<button type="submit" class="submit_button" id="submit_button">Submit</button>
+<button onclick= "submit_data();"  class="submit_button" id="submit_button">Submit</button>
 </div>
 
 </div>
+
+    <form id="submit_form" method = "post">{% csrf_token %}
+            <input type='hidden' name= 'play_count' id="play_count" value='' />
+    <input type='hidden' name= 'fullscreen_count' id="fullscreen_count" value='' />
+    <input type='hidden' id= 'replay_count' name="replay_count" value='' />
+            <input type='hidden' id= 'playback_count' name="playback_count" value='' />
+                    <input type='hidden' id= 'duration' name="duration" value='' />
+    <input type="hidden" id="difficulty_submit" name="difficulty" value="">
+        <input type="hidden" id="category_submit" name="category" value="">
+        <input type="hidden" id="textarea_submit" name="textarea" value="">
+    <input type="hidden" id="video_id" name="video_id" value="{{ video.video_id }}">
+
+
+    </form>
 
 
 </body>
 
     <script>
         const video = document.getElementById("video");
-        var toggle_count = 0
+        var toggle_counter = 0
         var toggle_play = false
     function togglePlay(){
         toggle_play ? video.pause() : video.play();
         toggle_play = !toggle_play
-        toggle_count ++;
+        toggle_counter ++;
     }
 
-    var fullscreen_count = 0
+    var fullscreen_counter = 0
         function openFullscreen(){
-            fullscreen_count++;
+            fullscreen_counter++;
               if (video.requestFullscreen) {
     video.requestFullscreen();
   } else if (video.webkitRequestFullscreen) { /* Safari */
@@ -207,22 +301,47 @@
     video.msRequestFullscreen();
   }
         }
-        var replay_count = 0
+        var replay_counter = 0
         function replay(){
-            replay_count ++;
+            replay_counter ++;
                 video.currentTime = '0';
     video.play();
         }
-        var playback_count = 0
+        var playback_counter = 0
         function playback(){
         video.playbackRate = document.getElementById("playspeed_id").value
+            playback_counter++;
         }
 
-        var duration = 0;
+        var duration_in_sec = 0;
         function second_counter(){
-            duration += 1;
+            duration_in_sec += 1;
         }
         setInterval(second_counter, 1000)
+
+        window.onload = function() {
+            var loader = document.getElementById("loader_screen");
+            loader.style.display = "none";
+        }
+
+        function submit_data(){
+            document.getElementById('play_count').value = toggle_counter;
+        document.getElementById('fullscreen_count').value = fullscreen_counter;
+        document.getElementById('replay_count').value = replay_counter;
+        document.getElementById("playback_count").value = playback_counter;
+        document.getElementById("duration").value = duration_in_sec;
+        document.getElementById("textarea_submit").value = document.getElementById("text_field").value;
+        document.getElementById("difficulty_submit").value = document.getElementById("difficulty").value;
+        document.getElementById("category_submit").value = document.getElementById("category").value;
+        if (["1","2","3"].includes(document.getElementById("difficulty").value) && ["1","2"].includes(document.getElementById("category").value))
+            {
+                document.getElementById("submit_form").submit();
+            }else{
+            alert("Please enter a correct difficulty or category value.")
+            }
+
+
+        }
 
     </script>
 {% endblock content %}

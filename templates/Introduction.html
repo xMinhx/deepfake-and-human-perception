@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-{% extends base.html %}
+{% extends "base.html" %}
     {% block content %}
 
     <style>
@@ -53,14 +53,13 @@
         You may repeat the video, if you want to. <br><br>
         Additionally you need to provide the difficulty of the classification of the video e.g if you had no problems to detect that the video was manipulated select "Easy".
         <br><br>
-            The reason you classified the video as manipulated or not-manipulated can be elaborated in an optional text-box.
-            Eventhough the text-box may be optional, more information will help tremendously.</p>
+            The reason you classified the video as manipulated or not-manipulated can be elaborated in an optional text-box.</p>
     </div>
     </div>
 
 
     <div class="wrapper">
-        <button type="button" class="header_button">
+        <button onclick="location.href='../userdata/'" type="button" class="header_button">
             Next
         </button>
     </div>

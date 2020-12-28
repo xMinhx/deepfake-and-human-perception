@@ -21,8 +21,9 @@ from Classification import views as classification
 
 
 urlpatterns = [
-    path('', start.home_screen_view),
-    path('userdata/', start.userdata_view),
-    path('classification/', classification.classification_view),
+    path('', start.home_screen_view, name="home_name"),
+    path('notification/', start.instruction_view, name="notify_name"),
+    path('userdata/', start.userdata_view, name="userdata_name"),
+    path('classification/', classification.classification_view, name="classification_name"),
     path('admin/', admin.site.urls),
 ]
