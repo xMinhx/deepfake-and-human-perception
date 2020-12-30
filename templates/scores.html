@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+{% extends "base.html" %}
+    {% block content %}
+
+    <style>
+    div.notification{
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size:calc(30px + 1.5vw);
+        margin-left: 10vw;
+        margin-right: 10vw;
+        text-align:center;
+    }
+
+    div.wrapper-notif{
+        background: #13293D;
+        border-radius: 15px;
+        border: 2px solid #E8F1F2;
+        margin: 15vh 5vh 10vh;
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <div class = "wrapper-notif">
+    <div class = "notification">
+        <p id="p1" style = "color:#E8F1F2">You are </p>
+        <hr>
+        <ol>
+        {% load score_filter %}
+            {% for key, values in user_scores.items %}
+                {% if key == user_id %}
+                    <li style = "color:#b75a5a"><a>{{values.username}}: {{ values.user_score }} ({{ values.correct|percentage:50 }}%)</a></li>
+                {% else %}
+             <li style = "color:#E8F1F2"><a>{{values.username}}: {{ values.user_score }} ({{ values.correct|percentage:50 }}%)</a></li>
+                {% endif %}
+{% endfor %}
+        </ol>
+    </div>
+    </div>
+
+
+</body>
+
+{% autoescape off %}
+<script type="text/javascript">
+    var dictionary = {{user_scores}};
+    user_id = {{ user_id }};
+    if (user_id in dictionary) {
+        document.getElementById("p1").innerHTML = "You are: " + dictionary[user_id]["username"] + "<br>"
+            + "Your score: " + dictionary[user_id]["user_score"] + " points (" + parseInt(dictionary[user_id]["correct"] / 50 * 100) + "%)";
+    }else{
+        document.getElementById("p1").innerHTML = "You are: User not found."
+    }
+
+</script>
+{% endautoescape %}
+
+    {% endblock content %}

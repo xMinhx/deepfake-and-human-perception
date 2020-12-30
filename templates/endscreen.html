@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+{% extends "base.html" %}
+    {% block content %}
+
+    <style>
+    div.notification{
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size:calc(30px + 1.5vw);
+        margin-left: 10vw;
+        margin-right: 10vw;
+        text-align:center;
+    }
+
+    div.wrapper-notif{
+        background: #13293D;
+        border-radius: 15px;
+        border: 2px solid #E8F1F2;
+        margin: 15vh 5vh 10vh;
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <div class = "wrapper-notif">
+    <div class = "notification">
+        <p style = "color:#E8F1F2">Thank you for your participation.</p>
+        <p id="p1" style = "color:#E8F1F2">Your stats:</p>
+        <p id="p2" style = "color:#E8F1F2">Points earned: </p>
+        <p id="p3" style = "color:#E8F1F2">Accuracy: </p>
+    </div>
+    </div>
+
+
+</body>
+
+{% autoescape off %}
+<script type="text/javascript">
+    var dictionary = {{user_score}};
+    document.getElementById("p1").innerText = "Your stats, " + dictionary["username"];
+    document.getElementById("p2").innerText = "Earned points: " + dictionary["user_score"];
+    document.getElementById("p3").innerText = "Correct answer : " + parseInt(dictionary["correct"]/50*100) + "%";
+</script>
+{% endautoescape %}
+
+    {% endblock content %}
