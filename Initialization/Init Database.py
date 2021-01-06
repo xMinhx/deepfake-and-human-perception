@@ -1,11 +1,10 @@
 from Classification.models import Video, Classification
 from Start.models import User,Testgroup,Difficulty,Gender,Class
-
+import json
 # ============================
 # USE ONLY FOR INIT OF DATABASE
 #=============================
 
-import json
 
 easy = Difficulty(label_id = 1, label_name = "Easy")
 medium = Difficulty(label_id = 2, label_name = "Medium")
@@ -31,7 +30,11 @@ no_feedback = Testgroup(label_id = 2, label_name="No Feedback")
 feedback_group.save()
 no_feedback.save()
 
-file = open('F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\metadata.json')
+from Classification.models import Video, Classification
+from Start.models import User,Testgroup,Difficulty,Gender,Class
+import json
+
+file = open('F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\metadata.json')
 list_videos = json.load(file)
 
 for x in list_videos:

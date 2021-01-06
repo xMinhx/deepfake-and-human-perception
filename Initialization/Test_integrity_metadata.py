@@ -3,9 +3,9 @@ import random
 import shutil
 import json
 
-amount_selected_videos = 50
+amount_selected_videos = 25
 
-file = open("F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\metadata.json")
+file = open("F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\metadata.json")
 metadata_select = json.load(file)
 
 count_manipulated = 0
@@ -27,3 +27,8 @@ else:
 # ===== OUTPUT =====
 # Manipulierte Videos: 27 - 54.0%
 # Nicht manipulierte Videos: 23 - 46.0%
+
+#After change of samples to 25
+# ==== OUTPUT ====
+#Manipulierte Videos: 10 - 40.0%
+#Nicht manipulierte Videos: 15 - 60.0%

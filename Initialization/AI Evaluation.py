@@ -1,6 +1,12 @@
 import os
 import json
 
+# =========== DO NOT USE ANYMORE ===================
+# This File was only used, to assign the retrieved values
+# to it's respective video. The result can be found in
+# metadata_ai.json
+# ==================================================
+
 videos = os.listdir(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected')
 videos.remove("metadata.json")

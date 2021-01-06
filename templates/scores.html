@@ -19,20 +19,40 @@
         margin: 15vh 5vh 10vh;
     }
 
+        .find_button {
+        font-family: 'Source Sans Pro', sans-serif;
+        letter-spacing: 3px;
+        border-radius: 5px 5px;
+        background-color: #13293D;
+        border: 2px solid #E8F1F2;
+        color: #E8F1F2;
+        box-shadow: inset 0 0 0 0 #13293D;
+        transition: ease-out 0.5s;
+        font-size:calc(15px + 1.0vw);
+        outline: 0;
+    }
+
+    .find_button:hover {
+        box-shadow: inset 20vw 0 0 0 #1B98E0;
+        cursor: pointer;
+        color: #E8F1F2;
+    }
+
     </style>
 
 </head>
 
 <body>
+
     <div class = "wrapper-notif">
     <div class = "notification">
-        <p id="p1" style = "color:#E8F1F2">You are </p>
+        <p id="p1" style = "color:#E8F1F2">You are </p><button onclick= "scrollen();" class="find_button">Find rank</button>
         <hr>
         <ol>
         {% load score_filter %}
             {% for key, values in user_scores.items %}
                 {% if key == user_id %}
-                    <li style = "color:#b75a5a"><a>{{values.username}}: {{ values.user_score }} ({{ values.correct|percentage:50 }}%)</a></li>
+                    <li style = "color:#b75a5a" id="you"><a>{{values.username}}: {{ values.user_score }} ({{ values.correct|percentage:50 }}%)</a></li>
                 {% else %}
              <li style = "color:#E8F1F2"><a>{{values.username}}: {{ values.user_score }} ({{ values.correct|percentage:50 }}%)</a></li>
                 {% endif %}
@@ -53,6 +73,12 @@
             + "Your score: " + dictionary[user_id]["user_score"] + " points (" + parseInt(dictionary[user_id]["correct"] / 50 * 100) + "%)";
     }else{
         document.getElementById("p1").innerHTML = "You are: User not found."
+    }
+    function scrollen()
+    {
+        document.getElementById('you').scrollIntoView({
+  behavior: 'smooth'
+});
     }
 
 </script>

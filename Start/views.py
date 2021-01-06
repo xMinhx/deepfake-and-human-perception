@@ -40,5 +40,5 @@ def userdata_view(request):
                         pixel_width=width,
                         fps=fps)
         new_user.save()
-        return redirect('classification')
+        return redirect('classification_name')
     return render(request, "Userdata.html")
