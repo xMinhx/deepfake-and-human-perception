@@ -1,11 +1,11 @@
-    div.header {
-        font-size: 3vw;
-        text-shadow: 4px 4px #13293d;
-        text-align: center;
-        margin-top: 10vh;
-        background: #13293D;
-        border-radius: 15px;
-        border: 2px solid #E8F1F2;
+div.header {
+    font-size: 3vw;
+    text-shadow: 4px 4px #13293d;
+    text-align: center;
+    margin-top: 10vh;
+    background: #13293D;
+    border-radius: 15px;
+    border: 2px solid #E8F1F2;
     }
 
     .header_button {
@@ -31,11 +31,11 @@
         text-align: center;
     }
 
-    div.privacy_notification {
-        font-size: 2.5vw;
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
+div.privacy_notification {
+    font-size: 2.5vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
     div.notif_margin{
         background: #13293D;
         border-radius: 15px;
