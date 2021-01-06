@@ -1,444 +1,91 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <head>
-    <style>
-
-        video{
-        max-width: 720px;
-        max-height: 480px;
-
-    }
-        video::-webkit-media-controls {
-  display:none !important;
-}
-
-    button{
-        font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: 3px;
-        border-radius: 5px 5px;
-        background-color: rgba(220,160,140,0);
-        border: 2px solid #E8F1F2;
-        color: #E8F1F2;
-        box-shadow: inset 0 0 0 0 #13293D;
-        transition: ease-out 0.5s;
-        font-size: max(20px, 1vw);
-        outline: 0;
-    }
-
-
-    .button_wrapper{
-        padding-top: min(10px, 5%);
-        padding-bottom: min(10px, 5%);
-        text-align: center;
-    }
-
-
-    button:hover {
-        background: #13293D;
-        cursor: pointer;
-        color: #E8F1F2;
-    }
-
-    .submit_button:hover{
-        background: #45b563;
-        color: #E8F1F2
-    }
-
-    textarea:focus{
-        background: white;
-        color: black;
-    }
-
-    select{
-        -moz-padding-start: calc(10px - 3px);
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: 3px;
-        border-radius: 5px 5px;
-        background-color: rgba(220,160,140,0);
-        border: 2px solid #E8F1F2;
-        color: #E8F1F2;
-        box-shadow: inset 0 0 0 0 #13293D;
-        transition: ease-out 0.5s;
-        font-size:max(20px, 1vw);
-        outline: 0;
-        text-align-last: center;
-        display:inline-block;
-    }
-
-    select:hover{
-        background: #13293D;
-        cursor: pointer;
-        color: #E8F1F2;
-    }
-
-    select:focus{
-        background: #13293D;
-        cursor: pointer;
-    }
-
-    .select_wrapper{
-        text-align: center;
-        padding-top: min(50px, 5%);
-    }
-
-    .choose_form{
-        text-align: center;
-        padding-top: min(30px, 5%);
-    }
-
-    .difficulty_form{
-        text-align: center;
-        padding-top: 1vh;
-    }
-
-    .submit_wrapper{
-        margin-top: 3vh;
-        text-align:center;
-    }
-
-    textarea {
-     width: 100%;
-     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-     box-sizing: border-box; /* Opera/IE 8+ */
-             background-color: rgba(220,160,140,0);
-                     border: 1px solid #E8F1F2;
-                     color: white;
-}
-
-    .container{
-        margin-left: 30%;
-        margin-right: 30%;
-    }
-
-    body, html {
-    height: 100%;
-    text-align: center;
-}
-
-    font{
-        color: white;
-        font-size: 2.0vw;
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-
-    .points_correct{
-        color: white;
-        font-size: 2.0vw;
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-    .feedback_background_correct{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #57d950;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-        .points_wrong{
-        color: white;
-        font-size: 2.0vw;
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-    .feedback_background_wrong{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #853030;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wrapper-loader{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #13293D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.loader {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  border: 4px solid #Fff;
-  top: 50%;
-  animation: loader 2s infinite ease;
-}
-
-.loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #fff;
-  animation: loader-inner 2s infinite ease-in;
-}
-
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(180deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
-  75% {
-    transform: rotate(360deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader-inner {
-  0% {
-    height: 0%;
-  }
-
-  25% {
-    height: 0%;
-  }
-
-  50% {
-    height: 100%;
-  }
-
-  75% {
-    height: 100%;
-  }
-
-  100% {
-    height: 0%;
-  }
-}
-
-.progress_container{
-    width: 100%;
-    height: 30px;
-    background-color: rgb(19,41,61,0.2);
-    margin-top: 10vh;
-}
-.progress_bar{
-    height: 100%;
-    background: #13293D;
-
-}
-.display{
-    position: relative;
-    top: 12.9vh;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 20px;
-    color: white;
-}
-
-
-    </style>
-
+   {% load static %}
+   <link rel = "stylesheet" type = "text/css" href = "{% static "css/classification.css" %}"/>
 </head>
-
-        <div class="feedback_background_wrong" id="feedback_background_wrong">
-    <div class="points_wrong"><p>Incorrect: +0 points</p></div>
-        </div>
-
-
-    <div class="feedback_background_correct" id="feedback_background_correct">
-    <div class="points_correct"><p>Correct: +100 points</p></div>
-        </div>
-
-
-<div class="wrapper-loader" id="loader_screen">
-<span class="loader"><span class="loader-inner"></span></span>
-</div>
-
-<div class = video-margin>
-    <div class = "select_wrapper">
-    <form method="post" id="playbackspeed">{% csrf_token %}
-    <select name='playspeed_name' id="playspeed_id" onchange='playback()'>
-         <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
-         <option value='0.1'>0.1x</option>
-         <option value='0.5'>0.5x</option>
-         <option value='1.0'>Normal</option>
-         <option value='1.5'>1.5x</option>
-         <option value='2.0'>2.0x</option>
-    </select>
-</form>
-
-
-    <div class = "button_wrapper">
-<button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onclick="openFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
-</div>
-    <video controlsList="nodownload" playsinline loop width="100%" height="100%" id="video" oncontextmenu="return false;">
-        <source src ="https://drive.google.com/uc?export=download&id={{ video.video_link_id }}" type='video/mp4'/>
-    </video>
-</div>
-
-
-<div class ="container">
-    <textarea class = "textarea" id="text_field" name="text_field" maxlength="300"></textarea>
-
-<div>
-    <form class="choose_form">
-    <select name='category' id="category">
-         <option disabled selected>&nbsp;▼ Category&nbsp;</option>
-         <option value='1'>manipulated</option>
-         <option value='2'>not-manipulated</option>
-    </select>
-</form>
-</div>
-
-<div>
-    <form class = "difficulty_form">
-    <select name='difficulty' id="difficulty">
-         <option disabled selected>&nbsp;▼ Difficulty&nbsp;</option>
-         <option value='1'>Easy</option>
-         <option value='2'>Medium</option>
-         <option value='3'>Hard</option>
-    </select>
-
-</form>
-</div>
-</div>
-
-<div class = "submit_wrapper">
-<button onclick= "check_values();"  class="submit_button" id="submit_button">Submit</button>
-</div>
-
-        <div class="display" id="display">75%</div>
-<div class="progress_container">
-  <div class="progress_bar" id="progress_bar" style="width:75%"></div>
-</div>
-
-</div>
-
-    <form id="submit_form" method = "post">{% csrf_token %}
-            <input type='hidden' name= 'play_count' id="play_count" value='' />
-    <input type='hidden' name= 'fullscreen_count' id="fullscreen_count" value='' />
-    <input type='hidden' id= 'replay_count' name="replay_count" value='' />
-            <input type='hidden' id= 'playback_count' name="playback_count" value='' />
-                    <input type='hidden' id= 'duration' name="duration" value='' />
-    <input type="hidden" id="difficulty_submit" name="difficulty" value="">
-        <input type="hidden" id="category_submit" name="category" value="">
-        <input type="hidden" id="textarea_submit" name="textarea" value="">
-    <input type="hidden" id="video_id" name="video_id" value="{{ video.video_id }}">
-    </form>
-
-
+<body>
+   <div class="feedback_background_wrong" id="feedback_background_wrong">
+      <div class="points_wrong">
+         <p>Incorrect: +0 points</p>
+      </div>
+   </div>
+   <div class="feedback_background_correct" id="feedback_background_correct">
+      <div class="points_correct">
+         <p>Correct: +100 points</p>
+      </div>
+   </div>
+   <div class="wrapper-loader" id="loader_screen">
+      <span class="loader"><span class="loader-inner"></span></span>
+   </div>
+   <div class = video-margin>
+      <div class = "select_wrapper">
+         <form method="post" id="playbackspeed">
+            {% csrf_token %}
+            <select name='playspeed_name' id="playspeed_id" onchange='playback()'>
+               <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
+               <option value='0.1'>0.1x</option>
+               <option value='0.5'>0.5x</option>
+               <option value='1.0'>Normal</option>
+               <option value='1.5'>1.5x</option>
+               <option value='2.0'>2.0x</option>
+            </select>
+         </form>
+         <div class = "button_wrapper">
+            <button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onclick="openFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
+         </div>
+         <video controlsList="nodownload" playsinline loop width="100%" height="100%" id="video" oncontextmenu="return false;">
+            <source src ="https://drive.google.com/uc?export=download&id={{ video.video_link_id }}" type='video/mp4'/>
+         </video>
+      </div>
+      <div class ="container">
+         <textarea class = "textarea" id="text_field" name="text_field" maxlength="300"></textarea>
+         <div>
+            <form class="choose_form">
+               <select name='category' id="category">
+                  <option disabled selected>&nbsp;▼ Category&nbsp;</option>
+                  <option value='1'>manipulated</option>
+                  <option value='2'>not-manipulated</option>
+               </select>
+            </form>
+         </div>
+         <div>
+            <form class = "difficulty_form">
+               <select name='difficulty' id="difficulty">
+                  <option disabled selected>&nbsp;▼ Difficulty&nbsp;</option>
+                  <option value='1'>Easy</option>
+                  <option value='2'>Medium</option>
+                  <option value='3'>Hard</option>
+               </select>
+            </form>
+         </div>
+      </div>
+      <div class = "submit_wrapper">
+         <button onclick= "check_values();"  class="submit_button" id="submit_button">Submit</button>
+      </div>
+      <div class="display" id="display">75%</div>
+      <div class="progress_container">
+         <div class="progress_bar" id="progress_bar" style="width:75%"></div>
+      </div>
+   </div>
+   <form id="submit_form" method = "post">{% csrf_token %}
+      <input type='hidden' name= 'play_count' id="play_count" value='' />
+      <input type='hidden' name= 'fullscreen_count' id="fullscreen_count" value='' />
+      <input type='hidden' id= 'replay_count' name="replay_count" value='' />
+      <input type='hidden' id= 'playback_count' name="playback_count" value='' />
+      <input type='hidden' id= 'duration' name="duration" value='' />
+      <input type="hidden" id="difficulty_submit" name="difficulty" value="">
+      <input type="hidden" id="category_submit" name="category" value="">
+      <input type="hidden" id="textarea_submit" name="textarea" value="">
+      <input type="hidden" id="video_id" name="video_id" value="{{ video.video_id }}">
+   </form>
+   <script>
+       var video_label_id = "{{ video.label_id }}";
+       var test_id = "{{ testid }}";
+       var videoleft = "{{ videoleft }}";
+   </script>
+   <script src="{% static "js/classification.js" %}"></script>
 </body>
-
-    <script>
-        document.getElementById("display").style.visibility = "hidden";
-        function call_display(){
-            document.getElementById("display").style.visibility = "visible";
-        }
-        setTimeout(call_display, 2100);
-        var progress_value = parseInt(parseInt("{{ videoleft }}")/25*100) + "%";
-        document.getElementById("progress_bar").style.width = progress_value;
-        document.getElementById("display").innerHTML = progress_value;
-
-        var correct_screen = document.getElementById("feedback_background_correct");
-        var wrong_screen = document.getElementById("feedback_background_wrong");
-
-        correct_screen.style.visibility = "hidden";
-        wrong_screen.style.visibility = "hidden";
-
-        const video = document.getElementById("video");
-        var toggle_counter = 0;
-        var toggle_play = false;
-    function togglePlay(){
-        toggle_play ? video.pause() : video.play();
-        toggle_play = !toggle_play;
-        toggle_counter ++;
-    }
-
-    var fullscreen_counter = 0
-        function openFullscreen(){
-            fullscreen_counter++;
-              if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.webkitRequestFullscreen) { /* Safari */
-    video.webkitRequestFullscreen();
-  } else if (video.msRequestFullscreen) { /* IE11 */
-    video.msRequestFullscreen();
-  }
-        }
-        var replay_counter = 0;
-        function replay(){
-            replay_counter ++;
-                video.currentTime = '0';
-    video.play();
-        }
-        var playback_counter = 0;
-        function playback(){
-        video.playbackRate = document.getElementById("playspeed_id").value;
-            playback_counter++;
-        }
-
-        var duration_in_sec = 0;
-        function second_counter(){
-            duration_in_sec += 1;
-        }
-        setInterval(second_counter, 1000)
-
-        window.onload = function() {
-            var loader = document.getElementById("loader_screen");
-            loader.style.display = "none";
-        }
-
-        function check_values(){
-            document.getElementById("display").style.visibility = "hidden";
-                    var difficulty = document.getElementById("difficulty").value;
-            var category = document.getElementById("category").value;
-        if (["1","2","3"].includes(difficulty) && ["1","2"].includes(category))
-            {
-                video.pause();
-                if (category === "{{ video.label_id }}" && "{{ testid }}" === "1"){
-                    correct_screen.style.visibility = "visible";
-                }else if(category !== "{{ video.labe_id}}" && "{{ testid }}" === "1"){
-                    wrong_screen.style.visibility = "visible";
-                }else{
-                    document.getElementById("loader_screen").style.display = "unset";
-                }
-                setTimeout(submit_data, 1500);
-                            }else{
-            alert("Please enter a correct difficulty or category value.");
-            }
-        }
-
-        function submit_data(){
-            document.getElementById('play_count').value = toggle_counter;
-        document.getElementById('fullscreen_count').value = fullscreen_counter;
-        document.getElementById('replay_count').value = replay_counter;
-        document.getElementById("playback_count").value = playback_counter;
-        document.getElementById("duration").value = duration_in_sec;
-        document.getElementById("textarea_submit").value = document.getElementById("text_field").value;
-        document.getElementById("difficulty_submit").value = document.getElementById("difficulty").value;
-        document.getElementById("category_submit").value = document.getElementById("category").value;
-
-                document.getElementById("submit_form").submit();
-        }
-
-    </script>
 {% endblock content %}

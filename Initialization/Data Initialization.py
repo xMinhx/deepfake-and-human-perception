@@ -13,8 +13,9 @@ file_list = os.listdir(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos')
 file_list.remove("metadata.json")
 
-#Passe metadaten an Video Grundlage an.
-file = open('F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\metadata.json')
+# Passe metadaten an Video Grundlage an.
+file = open(
+    'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\metadata.json')
 metadata_original = json.load(file)
 
 new_dict = {}
@@ -29,14 +30,14 @@ with open(
         'w') as fp2:
     json.dump(new_dict, fp2)
 
-
 # Es werden 50 Videos zufällig ausgewählt und in eine neue Liste gepackt, alte Liste wird angepasst
 file_list_selected = []
 for i in range(0, 50):
-    num = random.randint(0, len(file_list)-1)
+    num = random.randint(0, len(file_list) - 1)
     name = file_list[num]
-    shutil.copy("F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\" + name,
-                "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\" + name)
+    shutil.copy(
+        "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\" + name,
+        "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\" + name)
     file_list.remove(name)
     file_list_selected.append(name)
 
@@ -46,7 +47,7 @@ for x in file_list_selected:
     if x in metadata_original:
         new_dict[x] = metadata_original.get(x)
 
-#Speichere die neue Dictionary als JSON unter metadata.json
+# Speichere die neue Dictionary als JSON unter metadata.json
 with open(
         'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\metadata.json',
         'w') as fp:

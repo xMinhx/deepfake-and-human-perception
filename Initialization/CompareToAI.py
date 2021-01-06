@@ -65,7 +65,6 @@ for x in wrong_label:
     print("Guess probability: " + str(metadata_ai[x]["value"] / 100))
     print("=======================================================")
 
-
 # ========= OUTPUT =============
 # ===============[Sample of 25 Videos:]===================
 # Genauigkeit: 0.96

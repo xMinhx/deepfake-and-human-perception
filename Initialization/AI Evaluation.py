@@ -38,4 +38,4 @@ for x in videos:
 with open(
         'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Website\\Initialization\\metadata_ai.json',
         'w') as fp:
-    json.dump(new_dict,fp)
+    json.dump(new_dict, fp)

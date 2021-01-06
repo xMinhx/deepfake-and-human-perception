@@ -1,75 +1,26 @@
 <!DOCTYPE html>
-<head>
 {% extends "base.html" %}
-    {% block content %}
-    <style>
-    div.header {
-        font-size: 3vw;
-        text-shadow: 4px 4px #13293d;
-        text-align: center;
-        margin-top: 10vh;
-        background: #13293D;
-        border-radius: 15px;
-        border: 2px solid #E8F1F2;
-    }
-
-    .header_button {
-        font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: 3px;
-        border-radius: 5px 30px;
-        background-color: rgba(220,160,140,0);
-        border: 2px solid #E8F1F2;
-        color: #E8F1F2;
-        box-shadow: inset 0 0 0 0 #13293D;
-        transition: ease-out 0.5s;
-        font-size: 5vw;
-        outline: 0;
-    }
-
-    .header_button:hover {
-        box-shadow: inset 20vw 0 0 0 #13293D;
-        cursor: pointer;
-        color: #E8F1F2;
-    }
-
-    .wrapper {
-        text-align: center;
-    }
-
-    div.privacy_notification {
-        font-size: 2.5vw;
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-    div.notif_margin{
-        background: #13293D;
-        border-radius: 15px;
-        border: 2px solid #E8F1F2;
-        margin: 5vh 5vh 10vh;
-    }
-    </style>
-
+{% block content %}
+<head>
+   {% load static %}
+   <link rel = "stylesheet" type = "text/css" href = "{% static "css/start.css" %}"/>
 </head>
-
 <body>
-    <div class = "header">
-        <p style= "color:#E8F1F2"> Hi, my name is Minh, thank you for helping me out</p>
-    </div>
-
-    <div class = "notif_margin">
-        <div class = "privacy_notification">
-            <p style = "color:#E8F1F2"> In the further course, this website will collect data from you. This
+   <div class = "header">
+      <p style= "color:#E8F1F2"> Hi, my name is Minh, thank you for helping me out</p>
+   </div>
+   <div class = "notif_margin">
+      <div class = "privacy_notification">
+         <p style = "color:#E8F1F2"> In the further course, this website will collect data from you. This
             data cannot be traced back to you. This means that you are completely anonymous. However by clicking on the "Start"
-            button, you agree, that I'm allowed to collect this data and evaluate them for my university project.</p>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <button onclick="location.href='./notification/'" type="button" class="header_button">
-            Start
-        </button>
-    </div>
-
+            button, you agree, that I'm allowed to collect this data and evaluate them for my university project.
+         </p>
+      </div>
+   </div>
+   <div class="wrapper">
+      <button onclick="location.href='./notification/'" type="button" class="header_button">
+      Start
+      </button>
+   </div>
 </body>
-
 {% endblock content %}

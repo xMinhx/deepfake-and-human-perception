@@ -20,9 +20,8 @@ def instruction_view(request):
 @csrf_exempt
 def userdata_view(request):
     if not request.session.exists(request.session.session_key):
-        return redirect('')
+        return redirect('home_name')
     if User.objects.filter(session_id=request.session.session_key).exists():
-
         return redirect("classification_name")
 
     if request.method == "POST":

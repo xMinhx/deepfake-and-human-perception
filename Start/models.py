@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.sessions.models import Session
+
+
 # Create your models here.
 
 
@@ -25,6 +27,7 @@ class Class(models.Model):
 
     class Meta:
         db_table = 'class_label'
+
 
 class Testgroup(models.Model):
     label_id = models.IntegerField(primary_key=True)

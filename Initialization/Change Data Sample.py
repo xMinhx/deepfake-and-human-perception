@@ -4,8 +4,6 @@ import shutil
 import json
 from Classification.models import Video
 
-
-
 # ============= DO NOT USE ANYMORE =================
 # This file was only used to reduce the amount of samples
 # from 50 to 25 using the random lib. Reexecuting this
@@ -19,15 +17,16 @@ file_list.remove("metadata.json")
 
 file_list_selected = []
 for i in range(0, 25):
-    num = random.randint(0, len(file_list)-1)
+    num = random.randint(0, len(file_list) - 1)
     name = file_list[num]
-    shutil.copy("F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\" + name,
-                "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\" + name)
+    shutil.copy(
+        "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\" + name,
+        "F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\" + name)
     file_list.remove(name)
     file_list_selected.append(name)
 
-
-file = open('F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\metadata.json')
+file = open(
+    'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\metadata.json')
 metadata = json.load(file)
 
 new_dict = {}
