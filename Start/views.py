@@ -6,7 +6,6 @@ import random as rd
 
 
 # Create your views here.
-@csrf_exempt
 def home_screen_view(request):
     if not request.session.exists(request.session.session_key):
         request.session.create()
@@ -17,10 +16,9 @@ def instruction_view(request):
     return render(request, "Introduction.html")
 
 
-@csrf_exempt
 def userdata_view(request):
     if not request.session.exists(request.session.session_key):
-        return redirect('home_name')
+        return render(request, "error page.html")
     if User.objects.filter(session_id=request.session.session_key).exists():
         return redirect("classification_name")
 

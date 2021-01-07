@@ -8,6 +8,9 @@ from Start import views
 
 
 def call_end(request):
+    if (not request.session.exists(request.session.session_key)) or (
+            not User.objects.filter(session_id=request.session.session_key).exists()):
+        return render(request, "error page.html")
     user = User.objects.get(session_id=request.session.session_key)
     correct_count = len(Classification.objects.raw('''SELECT c.id, c.session_id_id, c.video_id_id
                                                   FROM classification c
@@ -47,7 +50,7 @@ def call_end(request):
 def classification_view(request):
     if (not request.session.exists(request.session.session_key)) or (
             not User.objects.filter(session_id=request.session.session_key).exists()):
-        return redirect("home_name")
+        return render(request, "error page.html")
 
     user = User.objects.get(session_id=request.session.session_key)
     video_liste_all = [
@@ -124,7 +127,7 @@ def classification_view(request):
 def scores(request):
     if (not request.session.exists(request.session.session_key)) or (
             not User.objects.filter(session_id=request.session.session_key).exists()):
-        return redirect("home_name")
+        return render(request, "error page.html")
 
     with open("./scores.json", "r") as fp:
         user_scores = json.load(fp)
