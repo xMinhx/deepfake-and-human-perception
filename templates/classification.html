@@ -82,8 +82,8 @@
       <input type="hidden" id="video_id" name="video_id" value="{{ video.video_id }}">
    </form>
    <script>
-       var video_label_id = "{{ video.label_id }}";
-       var test_id = "{{ testid }}";
+       var label_counter = "{{ video.label_id }}";
+       var group_id = "{{ testid }}";
        var videoleft = "{{ videoleft }}";
    </script>
    <script src="{% static "js/classification.js" %}"></script>

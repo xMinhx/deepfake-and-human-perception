@@ -68,9 +68,9 @@ function check_values() {
 	var category = document.getElementById("category").value;
 	if (["1", "2", "3"].includes(difficulty) && ["1", "2"].includes(category)) {
 		video.pause();
-		if (category === video_label_id && test_id === "1") {
+		if ((category === label_counter) && (group_id === "1")) {
 			correct_screen.style.visibility = "visible";
-		} else if (category !== video_label_id && test_id === "1") {
+		} else if ((category !== label_counter) && (group_id === "1")) {
 			wrong_screen.style.visibility = "visible";
 		} else {
 			document.getElementById("loader_screen").style.display = "unset";
