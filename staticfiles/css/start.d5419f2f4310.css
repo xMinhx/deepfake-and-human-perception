@@ -1,14 +1,10 @@
-div.notification {
-	font-size: calc(15px + 1.5vw);
-	margin-left: 10vw;
-	margin-right: 10vw;
-}
-
-div.wrapper-notif {
+div.header {
+	font-size: calc(12px + 1.5vw);
+	text-shadow: 4px 4px #13293d;
+	text-align: center;
 	background: #13293D;
 	border-radius: 15px;
 	border: 2px solid #E8F1F2;
-	margin: 5vh 5vh 10vh;
 }
 
 .header_button {
@@ -32,4 +28,17 @@ div.wrapper-notif {
 
 .wrapper {
 	text-align: center;
+}
+
+div.privacy_notification {
+	font-size: calc(12px + 1.5vw);
+	margin-left: 10vw;
+	margin-right: 10vw;
+}
+
+div.notif_margin {
+	background: #13293D;
+	border-radius: 15px;
+	border: 2px solid #E8F1F2;
+	margin: 5vh 5vh 10vh;
 }

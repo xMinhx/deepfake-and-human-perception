@@ -1,5 +1,5 @@
-from Classification.models import Video, Classification
-from Start.models import User, Testgroup, Difficulty, Gender, Class
+from Classification.models import Video
+from Start.models import Testgroup, Difficulty, Gender, Class, Scoreboard
 import json
 
 # ============================
@@ -31,10 +31,6 @@ no_feedback = Testgroup(label_id=2, label_name="No Feedback")
 feedback_group.save()
 no_feedback.save()
 
-from Classification.models import Video, Classification
-from Start.models import User, Testgroup, Difficulty, Gender, Class
-import json
-
 file = open(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\metadata.json')
 list_videos = json.load(file)
@@ -47,3 +43,7 @@ for x in list_videos:
                   label=tmp_label_id,
                   video_link_id=list_videos[x]["fileID"][32:65])
     video.save()
+
+scoreboard = Scoreboard(id=1,
+                        scores={"AI": {"username": "User AI", "correct": 24, "user_score": 2400}})
+scoreboard.save()

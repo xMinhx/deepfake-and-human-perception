@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from Classification.models import Video, Classification
-from Start.models import User, Class, Difficulty, Testgroup
+from Start.models import User, Class, Difficulty, Scoreboard
 import random as rd
 import json
-from django import db
-from Start import views
 
 
 def call_end(request):
@@ -13,37 +11,35 @@ def call_end(request):
         return render(request, "error page.html")
     user = User.objects.get(session_id=request.session.session_key)
     correct_count = len(Classification.objects.raw('''SELECT c.id, c.session_id_id, c.video_id_id
-                                                  FROM classification c
-                                                  JOIN user u ON u.id = c.session_id_id 
+                                                  FROM public.classification c
+                                                  JOIN public.user u ON u.id = c.session_id_id 
                                                   AND u.id = %s
                                                   JOIN video v ON v.video_id = c.video_id_id
                                                   WHERE c.class_field_id = v.label_id''', [user.id]))
 
     # total_count = len(Classification.objects.raw('''SELECT c.id, c.session_id_id, c.video_id_id
-    #                                               FROM classification c
-    #                                               JOIN user u ON u.id = c.session_id_id
+    #                                               FROM public.classification c
+    #                                               JOIN public.user u ON u.id = c.session_id_id
     #                                               AND u.id = %s
     #                                               JOIN video v ON v.video_id = c.video_id_id''', [user.id]))
+    user_scores = Scoreboard.objects.get(id=1).scores
 
-    with open("./scores.json", "r") as fp:
-        user_scores = json.load(fp)
-
-    if True:
+    if user.id not in user_scores:
         user_scores.update({str(user.id):
                                 {"username": "User " + str(user.id),
                                  "correct": correct_count,
                                  "user_score": correct_count * 100}})
 
-        sorted_tuple = sorted(user_scores.items(), key=lambda x: x[1]['correct'], reverse=True)
+        sorted_tuple = sorted(user_scores.items(), key=lambda x: x[1]['correct'], reverse=False)
         sorted_dict = {}
         for x in sorted_tuple:
             sorted_dict.update({str(x[0]):
                                     {"username": "User " + str(x[0]),
                                      "correct": x[1]["correct"],
                                      "user_score": x[1]["correct"] * 100}})
+        user_scores = sorted_dict
+        Scoreboard.objects.filter(id=1).update(scores=user_scores)
 
-        with open("./scores.json", "w") as fp2:
-            json.dump(sorted_dict, fp2)
     return render(request, "endscreen.html", {"user_score": user_scores[str(user.id)]})
 
 
@@ -129,7 +125,6 @@ def scores(request):
             not User.objects.filter(session_id=request.session.session_key).exists()):
         return render(request, "error page.html")
 
-    with open("./scores.json", "r") as fp:
-        user_scores = json.load(fp)
+    user_scores = Scoreboard.objects.get(id=1).scores
     user = User.objects.get(session_id=request.session.session_key)
     return render(request, "scores.html", {"user_scores": user_scores, "user_id": str(user.id)})

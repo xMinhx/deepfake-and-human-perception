@@ -3,8 +3,8 @@ document.getElementById("display").style.visibility = "hidden";
 function call_display() {
 	document.getElementById("display").style.visibility = "visible";
 }
-setTimeout(call_display, 2100);
-var progress_value = parseInt(parseInt("{{ videoleft }}") / 25 * 100) + "%";
+setTimeout(call_display, 2500);
+var progress_value = parseInt(parseInt(progress) / 25 * 100) + "%";
 document.getElementById("progress_bar").style.width = progress_value;
 document.getElementById("display").innerHTML = progress_value;
 
@@ -41,7 +41,7 @@ var replay_counter = 0;
 function replay() {
 	replay_counter++;
 	video.currentTime = '0';
-	video.play();
+	document.getElementById("video").load();
 }
 var playback_counter = 0;
 
@@ -68,14 +68,14 @@ function check_values() {
 	var category = document.getElementById("category").value;
 	if (["1", "2", "3"].includes(difficulty) && ["1", "2"].includes(category)) {
 		video.pause();
-		if (category === "{{ video.label_id }}" && "{{ testid }}" === "1") {
+		if ((category === i) && (j === "1")) {
 			correct_screen.style.visibility = "visible";
-		} else if (category !== "{{ video.labe_id}}" && "{{ testid }}" === "1") {
+		} else if ((category !== i) && (j === "1")) {
 			wrong_screen.style.visibility = "visible";
 		} else {
 			document.getElementById("loader_screen").style.display = "unset";
 		}
-		setTimeout(submit_data, 1500);
+		setTimeout(submit_data, 1000);
 	} else {
 		alert("Please enter a correct difficulty or category value.");
 	}

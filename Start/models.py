@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.sessions.models import Session
+import django.contrib.postgres.fields
 
 
 # Create your models here.
@@ -48,3 +49,7 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user'
+
+class Scoreboard(models.Model):
+    id = models.AutoField(primary_key=True)
+    scores = models.JSONField()

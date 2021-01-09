@@ -16,7 +16,7 @@ button {
 	color: #E8F1F2;
 	box-shadow: inset 0 0 0 0 #13293D;
 	transition: ease-out 0.5s;
-	font-size: max(20px, 1vw);
+	font-size: max(20px, 1.3vw);
 	outline: 0;
 }
 
@@ -55,7 +55,7 @@ select {
 	color: #E8F1F2;
 	box-shadow: inset 0 0 0 0 #13293D;
 	transition: ease-out 0.5s;
-	font-size: max(20px, 1vw);
+	font-size: max(20px, 1.3vw);
 	outline: 0;
 	text-align-last: center;
 	display: inline-block;

@@ -26,7 +26,7 @@ class Classification(models.Model):
     fullscreen = models.IntegerField()
     playback = models.IntegerField()
     duration_in_sec = models.IntegerField()
-    text = models.TextField()
+    text = models.TextField(max_length=300)
 
     class Meta:
         db_table = 'classification'
