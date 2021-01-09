@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Classification.models import Video, Classification
 from Start.models import User, Class, Difficulty, Scoreboard
 import random as rd
@@ -29,15 +29,6 @@ def call_end(request):
                                 {"username": "User " + str(user.id),
                                  "correct": correct_count,
                                  "user_score": correct_count * 100}})
-
-        sorted_tuple = sorted(user_scores.items(), key=lambda x: x[1]['correct'], reverse=False)
-        sorted_dict = {}
-        for x in sorted_tuple:
-            sorted_dict.update({str(x[0]):
-                                    {"username": "User " + str(x[0]),
-                                     "correct": x[1]["correct"],
-                                     "user_score": x[1]["correct"] * 100}})
-        user_scores = sorted_dict
         Scoreboard.objects.filter(id=1).update(scores=user_scores)
 
     return render(request, "endscreen.html", {"user_score": user_scores[str(user.id)]})
@@ -83,9 +74,13 @@ def classification_view(request):
     # video_liste_all.append(video_all_queryset[i][0])
 
     if request.method == "POST":
+        video_object = Video.objects.get(video_id=request.POST.get("video_id"))
+        user_object = User.objects.get(session_id=request.session.session_key)
+        if Classification.objects.filter(session_id=user_object, video_id=video_object).exists():
+            return redirect("classification_name")
         classification = Classification(
-            session_id=User.objects.get(session_id=request.session.session_key),
-            video_id=Video.objects.get(video_id=request.POST.get("video_id")),
+            session_id=user_object,
+            video_id=video_object,
             class_field=Class.objects.get(label_id=int(request.POST.get("category"))),
             difficulty=Difficulty.objects.get(label_id=int(request.POST.get("difficulty"))),
             play_pause=request.POST.get("play_count"),
@@ -126,5 +121,13 @@ def scores(request):
         return render(request, "error page.html")
 
     user_scores = Scoreboard.objects.get(id=1).scores
+    sorted_tuple = sorted(user_scores.items(), key=lambda x: x[1]['correct'], reverse=True)
+    sorted_dict = {}
+    for x in sorted_tuple:
+        sorted_dict.update({str(x[0]):
+                                {"username": "User " + str(x[0]),
+                                 "correct": x[1]["correct"],
+                                 "user_score": x[1]["correct"] * 100}})
+    user_scores = sorted_dict
     user = User.objects.get(session_id=request.session.session_key)
     return render(request, "scores.html", {"user_scores": user_scores, "user_id": str(user.id)})

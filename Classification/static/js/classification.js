@@ -41,7 +41,6 @@ var replay_counter = 0;
 function replay() {
 	replay_counter++;
 	video.currentTime = '0';
-	document.getElementById("video").load();
 }
 var playback_counter = 0;
 
