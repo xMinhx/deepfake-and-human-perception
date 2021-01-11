@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from Classification.models import Video, Classification
 from Start.models import User, Class, Difficulty, Scoreboard
 import random as rd
-import json
 
 
 def call_end(request):

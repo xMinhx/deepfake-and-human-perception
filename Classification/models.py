@@ -10,7 +10,9 @@ from Start.models import Difficulty
 class Video(models.Model):
     video_id = models.TextField(primary_key=True)
     label = models.ForeignKey(Class, on_delete=models.PROTECT)
-    video_link_id = models.TextField(unique=True)
+    gdrive_id = models.TextField(unique=True)
+    onedrive_id = models.TextField(unique=True)
+
 
     class Meta:
         db_table = 'video'
