@@ -42,6 +42,7 @@ class User(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     gender = models.ForeignKey(Gender, on_delete=models.PROTECT)
     testgroup = models.ForeignKey(Testgroup, on_delete=models.PROTECT)
+    device = models.TextField(default=None, blank=True, null=True)
     age = models.IntegerField()
     pixel_width = models.IntegerField()
     pixel_height = models.IntegerField()

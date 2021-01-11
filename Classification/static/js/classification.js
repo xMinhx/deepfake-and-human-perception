@@ -1,5 +1,6 @@
 document.getElementById("display").style.visibility = "hidden";
 
+
 function call_display() {
 	document.getElementById("display").style.visibility = "visible";
 }
