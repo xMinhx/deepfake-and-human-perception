@@ -29,13 +29,15 @@ def userdata_view(request):
         height = request.POST.get("height")
         width = request.POST.get("width")
         testgroup = rd.choice([1, 2])
+        device = request.POST.get("device")
         new_user = User(session_id=Session.objects.get(session_key=request.session.session_key),
                         gender=gender,
                         age=age,
                         testgroup=Testgroup.objects.get(label_id=testgroup),
                         pixel_height=height,
                         pixel_width=width,
-                        fps=fps)
+                        fps=fps,
+                        device=device)
         new_user.save()
         return redirect('classification_name')
     return render(request, "Userdata.html")
