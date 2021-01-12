@@ -51,9 +51,11 @@
       <div class = "submit_wrapper">
          <button onclick= "check_values();"  class="submit_button" id="submit_button">Submit</button>
       </div>
+
       <div class="display" id="display">420%</div>
       <div class="progress_container">
-         <div class="progress_bar" id="progress_bar" style="width:75%"></div>
+         <div class="progress_bar" id="progress_bar" style="width:75%">
+         </div>
       </div>
    </div>
    <form id="submit_form" method = "post">{% csrf_token %}
