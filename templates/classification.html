@@ -20,52 +20,37 @@
    </div>
    <div class = video-margin>
       <div class = "select_wrapper">
-         <form method="post" id="playbackspeed">
-            {% csrf_token %}
-            <select name='playspeed_name' id="playspeed_id" onchange='playback()'>
-               <option disabled selected>&nbsp;Playback Speed&nbsp;</option>
-               <option value='0.1'>0.1x</option>
-               <option value='0.5'>0.5x</option>
-               <option value='1.0'>Normal</option>
-               <option value='1.5'>1.5x</option>
-               <option value='2.0'>2.0x</option>
-            </select>
-         </form>
+         <button onclick="playback()" type="button" class="play_button" id="playbackspeed">Playbackspeed</button>&nbsp;&nbsp;&nbsp;
+         <button onclick="reload_video()" type="button" class="reload_button" id="reloadbutton">Reload Video</button>
          <div class = "button_wrapper">
             <button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button onclick="openFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
          </div>
-         <video controlsList="nodownload" playsinline loop width="100%" height="100%" id="video" oncontextmenu="return false;">
+         <video controlsList="nodownload" playsinline width="100%" height="100%" id="video" oncontextmenu="return false;">
             <source src ="https://onedrive.live.com/download?cid={{ video.onedrive_id }}" type='video/mp4'/>
          </video>
       </div>
       <div class ="container">
          <textarea class = "textarea" id="text_field" name="text_field" maxlength="300"></textarea>
          <div>
-            <form class="choose_form">
-               <select name='category' id="category">
-                  <option disabled selected>&nbsp;▼ Category&nbsp;</option>
-                  <option value='2'>manipulated</option>
-                  <option value='1'>not-manipulated</option>
-               </select>
+            <form class="choose_form" id="category">
+               <label><input type="radio" name="category" id="fake" onclick="set_category('2')"><span>Manipulated</span></label>
+               <label><input type="radio" name="category" id="real" onclick="set_category('1')"><span>Not manipulated</span></label>
             </form>
          </div>
          <div>
-            <form class = "difficulty_form">
-               <select name='difficulty' id="difficulty">
-                  <option disabled selected>&nbsp;▼ Difficulty&nbsp;</option>
-                  <option value='1'>Easy</option>
-                  <option value='2'>Medium</option>
-                  <option value='3'>Hard</option>
-               </select>
+            <form class="difficulty_form" id="difficulty">
+               <label><input type="radio" name="difficulty" id="easy" onclick="set_difficulty('1')"><span>Easy</span></label>
+               <label><input type="radio" name="difficulty" id="medium" onclick="set_difficulty('2')"><span>Medium</span></label>
+               <label><input type="radio" name="difficulty" id="hard" onclick="set_difficulty('3')"><span>Hard</span></label>
             </form>
          </div>
       </div>
       <div class = "submit_wrapper">
          <button onclick= "check_values();"  class="submit_button" id="submit_button">Submit</button>
       </div>
-      <div class="display" id="display">75%</div>
+      <div class="display" id="display">420%</div>
       <div class="progress_container">
          <div class="progress_bar" id="progress_bar" style="width:75%"></div>
       </div>
@@ -82,9 +67,9 @@
       <input type="hidden" id="video_id" name="video_id" value="{{ video.video_id }}">
    </form>
    <script>
-       var i = "{{ video.label_id }}";
-       var j = "{{ testid }}";
-       var progress = "{{ videoleft }}";
+      var i = "{{ video.label_id }}";
+      var j = "{{ testid }}";
+      var progress = "{{ videoleft }}";
    </script>
    <script src="{% static "js/classification.js" %}"></script>
 </body>

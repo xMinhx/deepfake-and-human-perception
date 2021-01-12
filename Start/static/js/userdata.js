@@ -38,6 +38,6 @@ function get_device_data() {
     if (["1", "2", "3"].includes(document.getElementById('gender').value) && (age >= 8 && age <= 122)) {
         document.getElementById("mainform").submit();
     } else {
-        alert("Please enter a correct difficulty or category value.")
+        alert("Please enter a correct value for gender and age.")
     }
 }

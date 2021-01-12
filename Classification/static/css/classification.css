@@ -33,43 +33,13 @@ button:hover {
 }
 
 .submit_button:hover {
-	background: #45b563;
+	background: #f12629;
 	color: #E8F1F2
 }
 
 textarea:focus {
 	background: white;
 	color: black;
-}
-
-select {
-	-moz-padding-start: calc(10px - 3px);
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-	font-family: 'Source Sans Pro', sans-serif;
-	letter-spacing: 3px;
-	border-radius: 5px 5px;
-	background-color: rgba(220, 160, 140, 0);
-	border: 2px solid #E8F1F2;
-	color: #E8F1F2;
-	box-shadow: inset 0 0 0 0 #13293D;
-	transition: ease-out 0.5s;
-	font-size: max(20px, 1.3vw);
-	outline: 0;
-	text-align-last: center;
-	display: inline-block;
-}
-
-select:hover {
-	background: #13293D;
-	cursor: pointer;
-	color: #E8F1F2;
-}
-
-select:focus {
-	background: #13293D;
-	cursor: pointer;
 }
 
 .select_wrapper {
@@ -242,4 +212,54 @@ font {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 20px;
 	color: white;
+}
+
+#difficulty input[type="radio"] {
+  display: none;
+}
+
+#difficulty span {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 5px 5px;
+	font-size: max(12px, 1.3vw);
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #ffffff;
+}
+
+#difficulty input[type="radio"]:hover + span {
+		cursor: pointer;
+	background-color: #13293D;
+	color: #ffffff;
+}
+
+#difficulty input[type="radio"]:checked + span {
+	background-color: #13293D;
+	color: #ffffff;
+}
+
+#category input[type="radio"] {
+  display: none;
+}
+
+#category span {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 5px 5px;
+  font-size: max(12px, 1.3vw);
+  color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#category input[type="radio"]:hover + span {
+		cursor: pointer;
+  background-color: #13293D;
+  color: #ffffff;
+}
+
+#category input[type="radio"]:checked + span {
+  background-color: #13293D;
+  color: #ffffff;
 }
