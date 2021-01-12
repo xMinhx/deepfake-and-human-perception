@@ -18,17 +18,18 @@
    <div class="wrapper-loader" id="loader_screen">
       <span class="loader"><span class="loader-inner"></span></span>
    </div>
-   <div class = video-margin>
+   <div class = video-margin id="video-margin">
       <div class = "select_wrapper">
          <button onclick="playback()" type="button" class="play_button" id="playbackspeed">Playbackspeed</button>&nbsp;&nbsp;&nbsp;
          <button onclick="reload_video()" type="button" class="reload_button" id="reloadbutton">Reload Video</button>
          <div class = "button_wrapper">
-            <button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play | Pause</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onclick="togglePlay()" type="button" class="play_button" id="play_button">Play</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button onclick="replay()" type="button" class="replay_button" id="replay_button">Replay</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onclick="openFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
+            <button onclick="toggleFullscreen()" type="button" class="fullscreen" id="fullscreen_button">Fullscreen</button>
          </div>
-         <video controlsList="nodownload" playsinline width="100%" height="100%" id="video" oncontextmenu="return false;">
+         <video controlsList="nodownload" playsinline width="720" height="480" id="video" oncontextmenu="return false;">
             <source src ="https://onedrive.live.com/download?cid={{ video.onedrive_id }}" type='video/mp4'/>
+            <source src="https://drive.google.com/uc?export=download&id={{ video.gdrive_id }}" type='video/mp4'>
          </video>
       </div>
       <div class ="container">

@@ -8,7 +8,7 @@ div.wrapper-notif {
 	background: #13293D;
 	border-radius: 15px;
 	border: 2px solid #E8F1F2;
-	margin: 1vh 5vh 5vh;
+	margin: 5vh 5vh 5vh;
 }
 
 .header_button {
@@ -25,11 +25,13 @@ div.wrapper-notif {
 }
 
 .header_button:hover {
-	box-shadow: inset 20vw 0 0 0 #13293D;
+	box-shadow: inset 20vw 0 0 0 #1B98E0;
 	cursor: pointer;
 	color: #E8F1F2;
 }
 
 .wrapper {
+	position: relative;
+	bottom: 10vh;
 	text-align: center;
 }

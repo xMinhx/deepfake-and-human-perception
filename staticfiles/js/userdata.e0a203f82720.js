@@ -33,7 +33,6 @@ function get_device_data() {
     document.getElementById('width').value = window.innerWidth;
     document.getElementById('fps').value = fps;
     document.getElementById('device').value = getDeviceType();
-    alert(getDeviceType());
     var age = parseInt(document.getElementById("age").value)
     if (["1", "2", "3"].includes(document.getElementById('gender').value) && (age >= 8 && age <= 122)) {
         document.getElementById("mainform").submit();

@@ -23,23 +23,56 @@ var toggle_counter = 0;
 var toggle_play = false;
 
 function togglePlay() {
-	toggle_play ? video.pause() : video.play();
+	if (toggle_play) {
+		video.pause();
+		document.getElementById("play_button").innerHTML = "Play";
+	} else {
+		video.play();
+		document.getElementById("play_button").innerHTML = "Pause";
+	}
 	toggle_play = !toggle_play;
 	toggle_counter++;
 }
 
-var fullscreen_counter = 0
-
-function openFullscreen() {
-	fullscreen_counter++;
-	if (video.requestFullscreen) {
-		video.requestFullscreen();
-	} else if (video.webkitRequestFullscreen) { /* Safari */
-		video.webkitRequestFullscreen();
-	} else if (video.msRequestFullscreen) { /* IE11 */
-		video.msRequestFullscreen();
+function toggleFullscreen() {
+	if (document.fullscreenElement || document.webkitFullscreenElement ||
+		document.mozFullScreenElement) {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.webkitExitFullscreen) { /* Safari */
+			document.webkitExitFullscreen();
+		} else if (document.msExitFullscreen) { /* IE11 */
+			document.msExitFullscreen();
+		}
+	} else {
+		fullscreen_counter++;
+		if (video_margin.requestFullscreen) {
+			video_margin.requestFullscreen();
+		} else if (video_margin.webkitRequestFullscreen) { /* Safari */
+			video_margin.webkitRequestFullscreen();
+		} else if (video_margin.msRequestFullscreen) { /* IE11 */
+			video_margin.msRequestFullscreen();
+		}
 	}
 }
+
+var fullscreen_counter = 0;
+var video_margin = document.getElementById("video-margin");
+
+document.addEventListener("fullscreenchange", check_screen);
+
+function check_screen() {
+	if (!(document.fullscreenElement || document.webkitFullscreenElement ||
+			document.mozFullScreenElement)) {
+		video.height = "480";
+		video.width = "720";
+	} else {
+		video.height = "4096";
+		video.width = "3072";
+	}
+}
+
+
 var replay_counter = 0;
 
 function replay() {
@@ -47,6 +80,7 @@ function replay() {
 	video.currentTime = '0';
 	video.play();
 	toggle_play = true;
+	document.getElementById("play_button").innerHTML = "Pause";
 }
 var playback_counter = 0;
 
