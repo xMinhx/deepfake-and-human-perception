@@ -80,7 +80,17 @@ WSGI_APPLICATION = 'Website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = os.getenv("DATABASE_DATA")
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '***REMOVED***',
+        'USER': '***REMOVED***',
+        'PASSWORD': '***REMOVED***',
+        'HOST': '***REMOVED***',
+        'PORT': '***REMOVED***',
+    }
+}
+    #os.getenv("DATABASE_DATA")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
