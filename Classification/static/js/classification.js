@@ -45,7 +45,6 @@ function toggleFullscreen() {
 			document.msExitFullscreen();
 		}
 	} else {
-		fullscreen_counter++;
 		if (video_margin.requestFullscreen) {
 			video_margin.requestFullscreen();
 		} else if (video_margin.webkitRequestFullscreen) { /* Safari */
@@ -62,6 +61,7 @@ var video_margin = document.getElementById("video-margin");
 document.addEventListener("fullscreenchange", check_screen);
 
 function check_screen() {
+	fullscreen_counter++;
 	if (!(document.fullscreenElement || document.webkitFullscreenElement ||
 			document.mozFullScreenElement)) {
 		video.height = "480";
