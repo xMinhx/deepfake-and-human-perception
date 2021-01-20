@@ -21,11 +21,12 @@ from Start import views as start
 from Classification import views as classification
 
 urlpatterns = [
-    path('', start.home_screen_view, name="home_name"),
-    path('notification/', start.instruction_view, name="notify_name"),
-    path('userdata/', start.userdata_view, name="userdata_name"),
-    path('classification/', classification.classification_view, name="classification_name"),
-    path('scores/', classification.scores, name="scores")
+    path('', classification.scores, name="scores")
+    #path('', start.home_screen_view, name="home_name"),
+    #path('notification/', start.instruction_view, name="notify_name"),
+    #path('userdata/', start.userdata_view, name="userdata_name"),
+    #path('classification/', classification.classification_view, name="classification_name"),
+    #path('scores/', classification.scores, name="scores")
 ]
 
 if settings.DEBUG:
