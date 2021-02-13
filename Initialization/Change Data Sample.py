@@ -10,12 +10,14 @@ from Classification.models import Video
 # file may break this project
 # ==================================================
 
-
+#List all videos in the file
 file_list = os.listdir(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected')
 file_list.remove("metadata.json")
 
 file_list_selected = []
+
+#Choose 25 videos randomly and copy them to a new file
 for i in range(0, 25):
     num = random.randint(0, len(file_list) - 1)
     name = file_list[num]
@@ -25,9 +27,11 @@ for i in range(0, 25):
     file_list.remove(name)
     file_list_selected.append(name)
 
+#Refresh metadata accordingly
 file = open(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Filtered Videos\\metadata.json')
 metadata = json.load(file)
+
 
 new_dict = {}
 
@@ -40,5 +44,6 @@ with open(
         'w') as fp2:
     json.dump(new_dict, fp2)
 
+#Delete the remaining videos from the database
 for x in file_list:
     Video.objects.filter(video_id=x).delete()
