@@ -7,10 +7,12 @@ import json
 # metadata_ai.json
 # ==================================================
 
+#List chosen videos
 videos = os.listdir(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected')
 videos.remove("metadata.json")
 
+#Values passed by the AI
 checked_videos = ["REAL", "FAKE", "REAL", "FAKE", "FAKE", "FAKE", "FAKE",
                   "FAKE", "FAKE", "FAKE", "FAKE", "FAKE", "REAL", "FAKE",
                   "REAL", "FAKE", "REAL", "REAL", "REAL", "REAL", "REAL",
@@ -30,11 +32,14 @@ checked_values = [3, 97, 0, 99, 99, 97, 99,
 
 new_dict = {}
 counter = 0
+
+#Generate new metadata for A.I Evaluation
 for x in videos:
     new_dict.update({x: {"label_ai": checked_videos[counter],
                          "value": checked_values[counter]}})
     counter += 1
 
+#Safe dictionary
 with open(
         'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Website\\Initialization\\metadata_ai.json',
         'w') as fp:
