@@ -20,6 +20,7 @@ from django.urls import path
 from Start import views as start
 from Classification import views as classification
 
+#Defines the views called upon entering a URL
 urlpatterns = [
     #path('', classification.scores, name="scores")
     path('', start.home_screen_view, name="home_name"),
