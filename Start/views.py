@@ -5,23 +5,24 @@ from django.contrib.sessions.models import Session
 import random as rd
 
 
-# Create your views here.
+#Is called on first visit on the website, generates session key, if user don't have one
 def home_screen_view(request):
     if not request.session.exists(request.session.session_key):
         request.session.create()
     return render(request, "Start.html")
 
-
+#Calls introduction page
 def instruction_view(request):
     return render(request, "Introduction.html")
 
-
+#Is called at user registration page
 def userdata_view(request):
     if not request.session.exists(request.session.session_key):
         return render(request, "error page.html")
     if User.objects.filter(session_id=request.session.session_key).exists():
         return redirect("classification_name")
 
+    #If user pressed submit button save his data in database
     if request.method == "POST":
         age = int(request.POST.get("age"))
         gender = Gender.objects.get(label_id=request.POST.get("gender"))
