@@ -3,6 +3,8 @@ import random
 import shutil
 import json
 
+#Smaller integrity check for the videos
+#Does label count for correct and wrong equals to the total number of videos
 amount_selected_videos = 25
 
 file = open(
