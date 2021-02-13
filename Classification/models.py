@@ -6,7 +6,7 @@ from Start.models import Difficulty
 
 # Create your models here.
 
-
+#Entity type for video
 class Video(models.Model):
     video_id = models.TextField(primary_key=True)
     label = models.ForeignKey(Class, on_delete=models.PROTECT)
@@ -17,7 +17,7 @@ class Video(models.Model):
     class Meta:
         db_table = 'video'
 
-
+#Entity type for classification
 class Classification(models.Model):
     session_id = models.ForeignKey(User, on_delete=models.CASCADE)
     video_id = models.ForeignKey(Video, on_delete=models.CASCADE)
