@@ -1,5 +1,6 @@
 import json
 
+#Open the metadata of the original and the A.I based evaluation
 file = open(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Videos_Selected\\metadata.json')
 metadata_dict = json.load(file)
@@ -8,10 +9,13 @@ file = open(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Website\\Initialization\\metadata_ai.json')
 metadata_ai = json.load(file)
 
+
 counter_correct = 0
 counter_wrong = 0
 wrong_label = []
 
+#Check of values provided by the A.I are the same as the video label
+#Count wrong and correct answers
 for x in metadata_dict:
     if metadata_ai[x]["label_ai"] == metadata_dict[x]["label"]:
         counter_correct += 1
@@ -41,6 +45,8 @@ for x in wrong_label:
 # Guess probability: 0.36
 # =======================================================
 
+
+#Same as above with the new iteration of 25 videos
 file = open(
     'F:\\H-BRS\\Vorlesungen, Skripts, Notizen, Übungen\\Visual Computing\\Project Deepfake\\Final Video Selection\\metadata.json')
 metadata_dict_25 = json.load(file)
