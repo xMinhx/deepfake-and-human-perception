@@ -1,5 +1,5 @@
-Deepfake | A statistical examination of human perception on deepfake videos and their accuracy
-Some plots and visualisation derived from the data and analyzation
+### Deepfake | A statistical examination of human perception on deepfake videos and their accuracy
+**Some plots and visualisation derived from the data and analyzation**
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/NjFpf77/Screenshot-2.png" alt="Screenshot-2" border="0"></a>
 <a href="https://ibb.co/m9gG2hh"><img src="https://i.ibb.co/JvgKGrr/Screenshot-3.png" alt="Screenshot-3" border="0"></a>
