@@ -23,3 +23,4 @@
 # Enable syntax highlighting for files with `.gitattributes` extensions.
 #
 *.gitattributes linguist-language=gitattributes
+*.ipynb linguist-detectable=false
